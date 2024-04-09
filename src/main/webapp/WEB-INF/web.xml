@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="https://jakarta.ee/xml/ns/jakartaee" xsi:schemaLocation="https://jakarta.ee/xml/ns/jakartaee https://jakarta.ee/xml/ns/jakartaee/web-app_6_0.xsd" version="6.0">
+  <servlet>
+    <description></description>
+    <display-name>SvCadastrarCC</display-name>
+    <servlet-name>SvCadastrarCC</servlet-name>
+    <servlet-class>control.SvCadastrarCC</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>SvCadastrarCC</servlet-name>
+    <url-pattern>/SvCadastrarCC</url-pattern>
+  </servlet-mapping>
+  <display-name>contasBancarias</display-name>
+  <welcome-file-list>
+    <welcome-file>index.html</welcome-file>
+    <welcome-file>index.htm</welcome-file>
+    <welcome-file>index.jsp</welcome-file>
+    <welcome-file>default.html</welcome-file>
+    <welcome-file>default.htm</welcome-file>
+    <welcome-file>default.jsp</welcome-file>
+  </welcome-file-list>
+  <servlet>
+    <description></description>
+    <display-name>SvModoAdmin</display-name>
+    <servlet-name>SvModoAdmin</servlet-name>
+    <servlet-class>control.SvModoAdmin</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>SvModoAdmin</servlet-name>
+    <url-pattern>/SvModoAdmin</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>SvCadastrarCP</display-name>
+    <servlet-name>SvCadastrarCP</servlet-name>
+    <servlet-class>control.SvCadastrarCP</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>SvCadastrarCP</servlet-name>
+    <url-pattern>/SvCadastrarCP</url-pattern>
+  </servlet-mapping>
+</web-app>

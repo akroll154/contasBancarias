@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+<meta charset="UTF-8">
+<title>Contas Bancárias - Modo Administrador</title>
+
+<link rel="stylesheet" type="text/css" href="css/template.css">
+<link rel="stylesheet" type="text/css" href="css/mAdmin.css">
+
+
+</head>
+
+
+<body>
+
+	<header>
+
+		<h1>Modo Administrador</h1>
+
+	</header>
+	<nav>
+
+		<ul>
+			<li><a href="index.html">Home |</a></li>
+			<li><a href="modoAdmin.html" style="color: rgb(102, 153, 204)">Modo
+					Administrador |</a></li>
+			<li><a href="cadastrarCC.html">Cadastrar Conta Corrente |</a></li>
+			<li><a href="cadastrarCP.html">Cadastrar Conta Poupança </a></li>
+		</ul>
+
+	</nav>
+
+	<main>
+
+		<div>
+
+			<form action="SvModoAdmin" method="GET">
+				<input type="hidden" name="acao" value="criarBanco">
+				<button type="submit">Criar Banco de Dados e Tabelas</button>
+			</form>
+
+			<form action="SvModoAdmin" method="GET">
+				<input type="hidden" name="acao" value="deletarBanco">
+				<button type="submit">Deletar Banco de Dados</button>
+			</form>
+
+		</div>
+
+
+	</main>
+
+
+	<footer></footer>
+
+
+</body>
+
+
+</html>
