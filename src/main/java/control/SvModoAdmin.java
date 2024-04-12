@@ -14,7 +14,6 @@ public class SvModoAdmin extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-
 		String nome = request.getParameter("acao");
 
 		if ("criarBanco".equals(nome)) {
@@ -22,9 +21,9 @@ public class SvModoAdmin extends HttpServlet {
 			Conta c = new Conta();
 
 			if (c.criarBDeTabelas()) {
-				request.getRequestDispatcher("sucesso.html").forward(request, response);
+				request.setAttribute("msg", "Operação bem sucedida.");
 			} else {
-				request.getRequestDispatcher("erro.html").forward(request, response);
+				request.setAttribute("msg", c.getMsg());
 			}
 
 		} else if ("deletarBanco".equals(nome)) {
@@ -32,18 +31,18 @@ public class SvModoAdmin extends HttpServlet {
 			Conta c = new Conta();
 
 			if (c.deletarBD()) {
-				request.getRequestDispatcher("sucesso.html").forward(request, response);
+				request.setAttribute("msg", "Operação bem sucedida.");
 			} else {
-				request.getRequestDispatcher("erro.html").forward(request, response);
+				request.setAttribute("msg", c.getMsg());
 			}
 
 		}
 
+		request.getRequestDispatcher("modoAdmin.jsp").forward(request, response);
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-
 		doGet(request, response);
 	}
 

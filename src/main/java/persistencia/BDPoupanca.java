@@ -17,9 +17,7 @@ public class BDPoupanca extends BDConta {
 
 			//
 
-			if (conn == null) {
-				return false;
-			} else {
+			if (conn != null) {
 				String sql = "insert into contas_poupanca (agencia, nrConta, titular, saldo, rendimento) values (?,?,?,?,?)";
 				PreparedStatement ps = conn.prepareStatement(sql);
 
@@ -29,14 +27,22 @@ public class BDPoupanca extends BDConta {
 				ps.setDouble(4, cp.getSaldo());
 				ps.setDouble(5, cp.getRendimento());
 
-				ps.execute();
+				int aux = ps.executeUpdate();
 				conn.close();
 
+				cp.setMsg("Foram cadastradas " + aux + " contas poupança.");
 				return true;
+
+			} else {
+
+				cp.setMsg("Erro ao cadastrar.");
+				return false;
+
 			}
 
 		} catch (Exception e) {
-			e.printStackTrace();
+			// e.printStackTrace();
+			cp.setMsg("Erro de exceção ao salvar no BD: " + e.getMessage());
 		}
 
 		return false;

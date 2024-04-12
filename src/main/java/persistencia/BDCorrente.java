@@ -17,9 +17,8 @@ public class BDCorrente extends BDConta {
 
 			//
 
-			if (conn == null) {
-				return false;
-			} else {
+			if (conn != null) {
+
 				String sql = "insert into contas_corrente (agencia, nrConta, titular, saldo, limite) values (?,?,?,?,?)";
 				PreparedStatement ps = conn.prepareStatement(sql);
 
@@ -29,14 +28,22 @@ public class BDCorrente extends BDConta {
 				ps.setDouble(4, cc.getSaldo());
 				ps.setDouble(5, cc.getLimite());
 
-				ps.execute();
+				int aux = ps.executeUpdate();
 				conn.close();
 
+				cc.setMsg("Foram cadastradas " + aux + " contas corrente.");
 				return true;
+
+			} else {
+
+				cc.setMsg("Erro ao cadastrar.");
+				return false;
+
 			}
 
 		} catch (Exception e) {
-			e.printStackTrace();
+			cc.setMsg("Erro de exceção ao salvar no BD: " + e.getMessage());
+			// e.printStackTrace();
 		}
 
 		return false;

@@ -44,14 +44,19 @@ public class Corrente extends Conta {
 			BDCorrente bdc = new BDCorrente();
 
 			if (agencia.isEmpty()) {
+				msg = "Agência em branco.";
 				return false;
 			} else if (nrConta.isEmpty()) {
+				msg = "Número da conta em branco.";
 				return false;
 			} else if (titular.isEmpty()) {
+				msg = "Titular em branco.";
 				return false;
 			} else if (saldo < 0) {
+				msg = "Saldo negativo.";
 				return false;
 			} else if (limite < 0) {
+				msg = "Limite negativo.";
 				return false;
 			} else {
 

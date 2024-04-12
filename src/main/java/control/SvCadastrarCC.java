@@ -9,21 +9,10 @@ import java.io.IOException;
 
 import entidade.Corrente;
 
-/**
- * Servlet implementation class SvCadastrarCC
- */
 public class SvCadastrarCC extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
-    public SvCadastrarCC() {
-        super();
-        // TODO Auto-generated constructor stub
-    }
 
-    protected void doGet(HttpServletRequest request, HttpServletResponse response)
+	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 
 		String agencia = request.getParameter("agencia");
@@ -35,17 +24,17 @@ public class SvCadastrarCC extends HttpServlet {
 		Corrente c = new Corrente(agencia, nrConta, titular, saldo, limite);
 
 		if (c.salvar()) {
-			request.getRequestDispatcher("sucesso.html").forward(request, response);
+			request.setAttribute("msg", "Conta cadastrada com sucesso.");
 		} else {
-			request.getRequestDispatcher("erro.html").forward(request, response);
+			request.setAttribute("msg", c.getMsg());
 		}
+
+		request.getRequestDispatcher("cadastrarCC.jsp").forward(request, response);
+
 	}
 
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
-	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
 		doGet(request, response);
 	}
 

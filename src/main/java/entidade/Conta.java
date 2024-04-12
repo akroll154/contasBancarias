@@ -9,6 +9,7 @@ public class Conta {
 	protected String nrConta;
 	protected String titular;
 	protected double saldo;
+	protected String msg;
 
 	//
 
@@ -75,6 +76,14 @@ public class Conta {
 		this.saldo = saldo;
 	}
 
+	public String getMsg() {
+		return msg;
+	}
+
+	public void setMsg(String msg) {
+		this.msg = msg;
+	}
+
 	public boolean criarBDeTabelas() {
 
 		try {
@@ -82,13 +91,16 @@ public class Conta {
 			BDConta bdc = new BDConta();
 
 			if (bdc.criarBDeTabelas()) {
+				msg = "Operação bem sucedida.";
 				return true;
 			} else {
+				msg = "Erro ao criar o banco de dados.";
 				return false;
 			}
 
 		} catch (Exception e) {
-			e.printStackTrace();
+			// e.printStackTrace();
+			msg = "Algo deu errado. " + e.getMessage();
 		}
 
 		return false;
@@ -101,13 +113,16 @@ public class Conta {
 			BDConta bdc = new BDConta();
 
 			if (bdc.deletarBD()) {
+				msg = "Operação bem sucedida.";
 				return true;
 			} else {
+				msg = "Erro ao deletar o banco de dados.";
 				return false;
 			}
 
 		} catch (Exception e) {
-			e.printStackTrace();
+			// e.printStackTrace();
+			msg = "Algo deu errado. " + e.getMessage();
 		}
 
 		return false;

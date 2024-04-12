@@ -12,11 +12,6 @@ import entidade.Poupanca;
 public class SvCadastrarCP extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
-	public SvCadastrarCP() {
-		super();
-
-	}
-
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 
@@ -29,11 +24,12 @@ public class SvCadastrarCP extends HttpServlet {
 		Poupanca p = new Poupanca(agencia, nrConta, titular, saldo, rendimento);
 
 		if (p.salvar()) {
-			request.getRequestDispatcher("sucesso.html").forward(request, response);
+			request.setAttribute("msg", "Conta cadastrada com sucesso.");
 		} else {
-			request.getRequestDispatcher("erro.html").forward(request, response);
+			request.setAttribute("msg", p.getMsg());
 		}
 
+		request.getRequestDispatcher("cadastrarCP.jsp").forward(request, response);
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)

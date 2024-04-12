@@ -48,14 +48,19 @@ public class Poupanca extends Conta {
 			BDPoupanca bdc = new BDPoupanca();
 
 			if (agencia.isEmpty()) {
+				msg = "Agência em branco.";
 				return false;
 			} else if (nrConta.isEmpty()) {
+				msg = "Número da conta em branco.";
 				return false;
 			} else if (titular.isEmpty()) {
+				msg = "Titular em branco.";
 				return false;
 			} else if (saldo < 0) {
+				msg = "Saldo negativo.";
 				return false;
 			} else if (rendimento < 0) {
+				msg = "Rendimento negativo.";
 				return false;
 			} else {
 
